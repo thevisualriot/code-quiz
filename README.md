@@ -4,7 +4,7 @@ Welcome to the Front-End Quiz Application — a sleek, interactive quiz designed
 
 ## 🚀 Live Version
 
-Experience the live version of the Coding Quiz Application [HERE](https://thevisualriot.github.io/password-generator/)
+Experience the live version of the Coding Quiz Application [HERE](https://thevisualriot.github.io/coding-quiz/)
 
 ![Interface of the Coding Quiz](./assets/readme/landingPage.png)
 

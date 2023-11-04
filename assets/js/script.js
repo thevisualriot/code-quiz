@@ -136,35 +136,29 @@ function runQuestion(n){
 
 choices.addEventListener('click', function(e){
     selectedAnswer = e.target.id;
-    if (selectedAnswer == correctAnswer) {
+    if (selectedAnswer == correctAnswer && totalTime > 0) {
         console.log("that's correct");
         score += points;
         storeScore(score);
         console.log(score);
         localStorage.setItem("answer", "Correct!");
-    } else {
+    } else if (selectedAnswer != correctAnswer) {
         console.log("that's wrong");
-        totalTime - points;
+        totalTime -= points;
         console.log(score);
         storeScore(score);
         localStorage.setItem("answer", "Wrong!");
-    }
+    } 
+    // else if (selectedAnswer != correctAnswer && totalTime <= 10) {
+    //     questions.setAttribute('class', 'hide');
+    //     endScreen.setAttribute('class', 'start');
+    // }
     showAnswer();
     runQuestion(n+1);
 }); 
 
-function showQuestion () {
-    var line = document.createElement('hr');
-    questions.appendChild(line);
-    message = document.createElement('p');
-    if (selectedAnswer === correctAnswer) {
-        message.textContent = "Correct!";
-        questions.appendChild(message);
-    } else {
-        message.textContent = "Wrong!";
-        questions.appendChild(message);
-    }
-}
+
+
 
 function storeScore(score){
     localStorage.setItem("score", score);
@@ -196,11 +190,11 @@ function showAnswer(){
 
 function countTime(){
     setInterval(function() {
-        remainingTime.textContent = totalTime;
+        remainingTime.textContent = Math.max(totalTime, 0);
         totalTime--;
-        if(totalTime === 0){
+        if(totalTime <= 0){
             questions.setAttribute('class', 'hide');
             endScreen.setAttribute('class', 'start');
-        }
+        } 
     }, 1000);
 }

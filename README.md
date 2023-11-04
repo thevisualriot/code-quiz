@@ -4,7 +4,7 @@ A simple quiz application built with HTML, CSS, and JavaScript.
 
 ## Table of Contents
 
-- [Live version](#🚀-live-version)
+- [Live version](#live-version)
 - [Description](#📝-description)
 - [Features](#💻-features)
 - [Logic and Pseudocode](#🧠-logic-and-pseudocode)

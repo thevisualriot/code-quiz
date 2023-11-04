@@ -1,43 +1,43 @@
 var questionList = [
     {
-        "question": "Question 1",
-        "A": "Answer 1",
-        "B": "Answer 2",
-        "C": "Answer 3",
-        "D": "Answer 4",
+        "question": "What does HTML stand for?",
+        "A": "Hyper Text Markup Language",
+        "B": "Hyper Transfer Markup Language",
+        "C": "Hyperlinks and Text Markup Language",
+        "D": "Home Tool Markup Language",
+        "correct": "A",
+    },
+    {
+        "question": "In JavaScript, what is the purpose of the 'document.getElementById' method?",
+        "A": "Define a variable in the document",
+        "B": "Create a new HTML element",
+        "C": "Change the document's font size",
+        "D": "Retrieve an HTML element by its ID",
         "correct": "D",
     },
     {
-        "question": "Question 2",
-        "A": "Answer 1",
-        "B": "Answer 2",
-        "C": "Answer 3",
-        "D": "Answer 4",
-        "correct": "D",
+        "question": "Which HTML tag is used to link an external JavaScript file?",
+        "A": "<js>",
+        "B": "<link>",
+        "C": "<script>",
+        "D": "<javascript>",
+        "correct": "C", 
     },
     {
-        "question": "Question 3",
-        "A": "Answer 1",
-        "B": "Answer 2",
-        "C": "Answer 3",
-        "D": "Answer 4",
-        "correct": "D", 
+        "question": "What is the correct way to comment out a single line of code in JavaScript?",
+        "A": "// This is a comment",
+        "B": "<!-- This is a comment -->",
+        "C": "/* This is a comment */",
+        "D": "# This is a comment", 
+        "correct": "A", 
     },
     {
-        "question": "Question 4",
-        "A": "Answer 1",
-        "B": "Answer 2",
-        "C": "Answer 3",
-        "D": "Answer 4", 
-        "correct": "D", 
-    },
-    {
-        "question": "Question 5",
-        "A": "Answer 1",
-        "B": "Answer 2",
-        "C": "Answer 3",
-        "D": "Answer 4", 
-        "correct": "D", 
+        "question": "Which CSS property is used to change the text color of an element?",
+        "A": "text-color",
+        "B": "color",
+        "C": "font-color",
+        "D": "style-color", 
+        "correct": "B", 
     }
 ];
 
@@ -61,7 +61,8 @@ var score = 0;
 var points = 10;
 var n = 0;
 var users =[];
-var totalTime = 5;
+var totalTime = 50;
+var totalInterval;
 
 
 if(localStorage.getItem('users') !== null){
@@ -100,7 +101,7 @@ endScreen.addEventListener('click', function(e){
 })
 
 
-
+/* ----------------- QUESTIONS -------------------- */
 
 var answerA = document.createElement('button');
 answerA.setAttribute('id', 'A');
@@ -129,7 +130,9 @@ function runQuestion(n){
         choices.append(answerD); 
 
     } else {
-        return;
+        questions.setAttribute('class', 'hide');
+        endScreen.setAttribute('class', 'start');
+        clearInterval(totalInterval);
     }
 }
 
@@ -149,12 +152,9 @@ choices.addEventListener('click', function(e){
         storeScore(score);
         localStorage.setItem("answer", "Wrong!");
     } 
-    // else if (selectedAnswer != correctAnswer && totalTime <= 10) {
-    //     questions.setAttribute('class', 'hide');
-    //     endScreen.setAttribute('class', 'start');
-    // }
     showAnswer();
-    runQuestion(n+1);
+    n++;
+    runQuestion(n);
 }); 
 
 
@@ -189,7 +189,7 @@ function showAnswer(){
 
 
 function countTime(){
-    setInterval(function() {
+    totalInterval = setInterval(function() {
         remainingTime.textContent = Math.max(totalTime, 0);
         totalTime--;
         if(totalTime <= 0){

@@ -2,15 +2,6 @@
 
 A simple quiz application built with HTML, CSS, and JavaScript.
 
-## Table of Contents
-
-- [Live version](#live-version)
-- [Description](#📝-description)
-- [Features](#💻-features)
-- [Logic and Pseudocode](#🧠-logic-and-pseudocode)
-- [Screenshots](#📸-screenshots)
-- [License](#📜-license)
-
 ## 🚀 Live Version
 
 Experience the live version of the Password Generator [HERE](https://thevisualriot.github.io/password-generator/)

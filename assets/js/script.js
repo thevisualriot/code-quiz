@@ -83,27 +83,6 @@ startScreen.addEventListener('click', function(e){
 });
 
 
-/* -------------------- GET DATA ABOUT NEW PLAYER ---------------------------*/
-finalScore.textContent = localStorage.getItem('score'); // display the final score
-
-endScreen.addEventListener('click', function(e){
-    if(e.target.matches('button')){
-        // add new player and score to the localStorage
-        var newInitials = initials.value;
-        var newScore = localStorage.getItem('score');
-        var newUser = {
-            'initials': newInitials,
-            'score': newScore,
-        }
-        users.push(newUser); // add new player's data to array with all users
-        localStorage.setItem('users', JSON.stringify(users)); // update localStorage
-
-        // Go to HIGHSCORES.HTML
-        window.location.href='highscores.html';
-    }
-})
-
-
 /* ----------------- QUESTIONS -------------------- */
 
 // add buttons
@@ -139,7 +118,6 @@ function runQuestion(n){
     } else { // if there is no more questions
         questions.setAttribute('class', 'hide');
         endScreen.setAttribute('class', 'start');
-        clearInterval(totalInterval); // stop the timer
     }
 }
 
@@ -148,10 +126,12 @@ choices.addEventListener('click', function(e){
     var selectedAnswer = e.target.id; // store the selected answer
     if (selectedAnswer === correctAnswer) {  // if the answer is correct
         score += points; // add points to the score
+        finalScore.textContent = score;
         storeScore(score); // store score
         localStorage.setItem("answer", "Correct!"); 
     } else { // if the answer was wrong
         totalTime -= points; // subtract time from the clock
+        finalScore.textContent = score;
         storeScore(score); // store score
         localStorage.setItem("answer", "Wrong!");
     } 
@@ -195,3 +175,25 @@ function countTime(){
         } 
     }, 1000);
 }
+
+
+
+/* -------------------- GET DATA ABOUT NEW PLAYER ---------------------------*/
+
+endScreen.addEventListener('click', function(e){
+    if(e.target.matches('button')){
+        clearInterval(totalInterval); // stop the timer
+        // add new player and score to the localStorage
+        var newInitials = initials.value;
+        var newScore = localStorage.getItem('score');
+        var newUser = {
+            'initials': newInitials,
+            'score': newScore,
+        }
+        users.push(newUser); // add new player's data to array with all users
+        localStorage.setItem('users', JSON.stringify(users)); // update localStorage
+
+        // Go to HIGHSCORES.HTML
+        window.location.href='highscores.html';
+    }
+})

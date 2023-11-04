@@ -59,6 +59,7 @@ var wrapper = document.querySelector('.wrapper');
 var endScreen = document.querySelector('#end-screen');
 var finalScore = document.querySelector('#final-score');
 var initials = document.querySelector('#initials');
+var feedback = document.querySelector('#feedback');
 
 var numberOfQuestions = questionList.length;
 var correctAnswer;
@@ -89,6 +90,27 @@ startScreen.addEventListener('click', function(e){
     countTime();
     } 
 });
+
+/* ----------------- BUILD FEEDBACK --------------------- */
+var isItCorrect = document.createElement('p'); // create a paragraph 
+
+function updateFeedback () {
+if (localStorage.getItem('answer') != null){
+    isItCorrect.textContent = localStorage.getItem('answer'); // show if last answer was correct
+    feedback.appendChild(isItCorrect); // display
+} };
+
+function displayFeedback(){
+    var counter = 1;
+    feedback.setAttribute('class', 'feedback start');
+    setInterval(function() {
+        counter--;
+        if(counter === 0){
+            feedback.setAttribute('class', 'feedback hide');
+        } 
+    }, 1000);
+}
+
 
 
 /* ----------------- QUESTIONS -------------------- */
@@ -132,6 +154,9 @@ function runQuestion(n){
 
 // Set up the ANSWER BUTTON action
 choices.addEventListener('click', function(e){
+    feedback.setAttribute('class', 'feedback hide');
+    updateFeedback();
+
     var selectedAnswer = e.target.id; // store the selected answer
     if (selectedAnswer === correctAnswer) {  // if the answer is correct
         score += points; // add points to the score
@@ -144,8 +169,12 @@ choices.addEventListener('click', function(e){
         storeScore(score); // store score
         localStorage.setItem("answer", "Wrong!");
     } 
-    showAnswer(); // run function to display if the answer is correct or not
-    n++; // jump to the next question
+    
+    // display Feedback
+    displayFeedback();
+
+    // jump to the next question
+    n++; 
     runQuestion(n);
 }); 
 
@@ -153,24 +182,6 @@ choices.addEventListener('click', function(e){
 // STORE SCORE function
 function storeScore(score){
     localStorage.setItem("score", score);
-}
-
-// SHOW IF ANSWER WAS CORRECT function
-function showAnswer(){
-    var line = document.createElement('hr'); // create a line
-    questions.appendChild(line); // show the line
-    var isItCorrect = document.createElement('p'); // create a paragraph
-    isItCorrect.textContent = localStorage.getItem('answer'); // show if last answer was correct
-    questions.appendChild(isItCorrect); // display
-    // make it disappear after a second
-    var counter = 1;
-    var timer = setInterval(function() {
-        counter--;
-        if(counter === 0){
-            questions.removeChild(line);
-            questions.removeChild(isItCorrect);
-        }
-    }, 1000);
 }
 
 // CLOCK function

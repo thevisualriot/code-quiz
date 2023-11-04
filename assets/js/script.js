@@ -44,7 +44,6 @@ var questionList = [
 var questions = document.querySelector('#questions');
 var title = document.querySelector('#question-title');
 var choices = document.querySelector('#choices');
-var endScreen = document.querySelector('#end-screen');
 var remainingTime = document.querySelector('#time');
 var startButton = document.querySelector('#submit');
 var startScreen = document.querySelector('#start-screen');

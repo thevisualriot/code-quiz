@@ -1,1 +1,0 @@
-export var totalTime = 5;

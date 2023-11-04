@@ -72,7 +72,7 @@ var totalTime = 60;
 var totalInterval;
 
 
-// get Users from local storage
+// Check if Users data exist in the localStorage
 if(localStorage.getItem('users') !== null){
     users = JSON.parse(localStorage.getItem('users'));
 } else {
@@ -81,6 +81,8 @@ if(localStorage.getItem('users') !== null){
         'score': '',
     }];
 }
+
+
 
 /* ------------------ START THE QUIZ ----------------------- */
 startScreen.addEventListener('click', function(e){
@@ -91,15 +93,18 @@ startScreen.addEventListener('click', function(e){
     } 
 });
 
-/* ----------------- BUILD FEEDBACK --------------------- */
-var isItCorrect = document.createElement('p'); // create a paragraph 
 
+/* ---------------------------------- FEEDBACK ------------------------------------------------ */
+var isItCorrect = document.createElement('p'); // create a paragraph element for displaying feedback
+
+// Update feedback based on the last stored answer in local storage
 function updateFeedback () {
 if (localStorage.getItem('answer') != null){
     isItCorrect.textContent = localStorage.getItem('answer'); // show if last answer was correct
     feedback.appendChild(isItCorrect); // display
 } };
 
+// Display Feedback for one second
 function displayFeedback(){
     var counter = 1;
     feedback.setAttribute('class', 'feedback start');
@@ -110,7 +115,6 @@ function displayFeedback(){
         } 
     }, 1000);
 }
-
 
 
 /* ----------------- QUESTIONS -------------------- */

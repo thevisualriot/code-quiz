@@ -1,88 +1,53 @@
-# Module 6 Challenge Web APIs: Code Quiz
+# Quiz Application
 
-## Your Task
+A simple quiz application built with HTML, CSS, and JavaScript.
 
-As you proceed in your journey to becoming a front-end web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
+## Table of Contents
 
-To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework has taught you all the skills you need to succeed in this challenge.
+- [Live version](#🚀-live-version)
+- [Description](#📝-description)
+- [Features](#💻-features)
+- [Logic and Pseudocode](#🧠-logic-and-pseudocode)
+- [Screenshots](#📸-screenshots)
+- [License](#📜-license)
 
+## 🚀 Live Version
 
-## User Story
+Experience the live version of the Password Generator [HERE](https://thevisualriot.github.io/password-generator/)
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+![Interface of the Coding Quiz](./assets/readme/landingPage.png)
 
-## Acceptance Criteria
+## 📝 Description
 
-Create a code quiz that contains the following requirements:
+The Quiz Application is a web-based quiz game designed to test users on their knowledge of JavaScript, HTML, and CSS. It includes a countdown timer, multiple-choice questions, and a mechanism to track and display the final score.
 
-* A start button that when clicked a timer starts and the first question appears.
- 
-  * Questions contain buttons for each answer.
-  * 
-  * When answer is clicked, the next question appears
-  * 
-  * If the answer clicked was incorrect then subtract time from the clock
+## 💻 Features
 
-* The quiz should end when all questions are answered or the timer reaches 0.
-
-  * When the game ends, it should display their score and give the user the ability to save their initials and their score
-  
-## Mock-Up
-
-The following animation demonstrates the application functionality:
-
-![Animation of code quiz. Presses button to start quiz. Clicks the button for the answer to each question, displays if answer was correct or incorrect. Quiz finishes and displays high scores. User adds their intials, then clears their intials and starts over.](./assets/08-web-apis-challenge-demo.gif)
-
-## Grading Requirements
-
-This challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
+- Interactive quiz with multiple-choice questions
+- Countdown timer
+- Highscores tracking stored in `localStorage`
 
 
-## Review
+## 🧠 Logic
 
-You are required to submit BOTH of the following for review:
+1. Display the start screen with a "Start Quiz" button.
+2. Upon clicking the "Start Quiz" button, initiate the countdown timer and display the first question.
+3. Allow the user to select an answer by clicking the corresponding button.
+4. If the answer is correct, increment the score; if wrong, deduct time from the timer.
+5. Display whether the answer was correct or wrong for a brief period.
+6. Move to the next question.
+7. Repeat steps 3-6 until all questions are answered or the timer reaches 0.
+8. Display the end screen showing the final score and an input field for initials.
+9. Save the user's highscore.
+10. Display the list of highscores.
 
-* The URL of the functional, deployed application.
+## 📸 Screenshots
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+![Question example from the quiz](./assets/readme/question.png)
 
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+![End screen with the input for initials](./assets/readme/input.png)
+
+![Highscores table](./assets/readme/scores.png)
+
+## 📜 License
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)

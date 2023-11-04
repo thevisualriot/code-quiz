@@ -45,6 +45,13 @@ var questions = document.querySelector('#questions');
 var title = document.querySelector('#question-title');
 var choices = document.querySelector('#choices');
 var endScreen = document.querySelector('#end-screen');
+var remainingTime = document.querySelector('#time');
+var startButton = document.querySelector('#submit');
+var startScreen = document.querySelector('#start-screen');
+var wrapper = document.querySelector('.wrapper');
+var endScreen = document.querySelector('#end-screen');
+var finalScore = document.querySelector('#final-score');
+var initials = document.querySelector('#initials');
 
 var numberOfQuestions = questionList.length;
 var selectedAnswer;
@@ -53,7 +60,47 @@ var message;
 var score = 0;
 var points = 10;
 var n = 0;
-var totalTime = 50;
+var users =[];
+var totalTime = 5;
+
+
+if(localStorage.getItem('users') !== null){
+    users = JSON.parse(localStorage.getItem('users'));
+} else {
+    users = [{
+        'initials': '',
+        'score': '',
+    }];
+}
+
+
+startScreen.addEventListener('click', function(e){
+    if (e.target.matches('button')){
+    startScreen.setAttribute('class', 'hide');
+    questions.setAttribute('class', 'start');
+    countTime();
+    } 
+});
+
+
+finalScore.textContent = localStorage.getItem('score');
+
+endScreen.addEventListener('click', function(e){
+    if(e.target.matches('button')){
+        var newInitials = initials.value;
+        var newScore = localStorage.getItem('score');
+        var newUser = {
+            'initials': newInitials,
+            'score': newScore,
+        }
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        window.location.href='highscores.html';
+    }
+})
+
+
+
 
 var answerA = document.createElement('button');
 answerA.setAttribute('id', 'A');
@@ -64,11 +111,10 @@ answerC.setAttribute('id', 'C');
 var answerD = document.createElement('button');
 answerD.setAttribute('id', 'D');
 
-
 runQuestion(n);
 
+
 function runQuestion(n){
-    countTime();
     if (n < numberOfQuestions) {
         title.textContent = questionList[n].question;
         answerA.textContent = questionList[n].A;
@@ -98,6 +144,7 @@ choices.addEventListener('click', function(e){
         localStorage.setItem("answer", "Correct!");
     } else {
         console.log("that's wrong");
+        totalTime - points;
         console.log(score);
         storeScore(score);
         localStorage.setItem("answer", "Wrong!");
@@ -146,8 +193,10 @@ function showAnswer(){
     }, 1000);
 }
 
+
 function countTime(){
     setInterval(function() {
+        remainingTime.textContent = totalTime;
         totalTime--;
         if(totalTime === 0){
             questions.setAttribute('class', 'hide');

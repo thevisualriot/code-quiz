@@ -1,11 +1,4 @@
-var startButton = document.querySelector('#submit');
-var startScreen = document.querySelector('#start-screen');
-var questions = document.querySelector('#questions');
-var wrapper = document.querySelector('.wrapper');
-var endScreen = document.querySelector('#end-screen');
-var finalScore = document.querySelector('#final-score');
-var initials = document.querySelector('#initials');
-var users =[];
+
 
 
 if(localStorage.getItem('users') !== null){
@@ -22,6 +15,7 @@ startScreen.addEventListener('click', function(e){
     if (e.target.matches('button')){
     startScreen.setAttribute('class', 'hide');
     questions.setAttribute('class', 'start');
+    countTime();
     } 
 });
 
@@ -41,3 +35,16 @@ endScreen.addEventListener('click', function(e){
         window.location.href='highscores.html';
     }
 })
+
+
+
+function countTime(){
+    setInterval(function() {
+        remainingTime.textContent = totalTime;
+        totalTime--;
+        if(totalTime === 0){
+            questions.setAttribute('class', 'hide');
+            endScreen.setAttribute('class', 'start');
+        }
+    }, 1000);
+}

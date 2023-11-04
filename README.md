@@ -1,16 +1,16 @@
-# Quiz Application
+# Coding Quiz Application
 
-A simple quiz application built with HTML, CSS, and JavaScript.
+Welcome to the Front-End Quiz Application — a sleek, interactive quiz designed to assess your proficiency in HTML, CSS, and JavaScript. Test your skills and level up your front-end development expertise!
 
 ## 🚀 Live Version
 
-Experience the live version of the Password Generator [HERE](https://thevisualriot.github.io/password-generator/)
+Experience the live version of the Coding Quiz Application [HERE](https://thevisualriot.github.io/password-generator/)
 
 ![Interface of the Coding Quiz](./assets/readme/landingPage.png)
 
 ## 📝 Description
 
-The Quiz Application is a web-based quiz game designed to test users on their knowledge of JavaScript, HTML, and CSS. It includes a countdown timer, multiple-choice questions, and a mechanism to track and display the final score.
+The Coding Quiz Application is a dynamic web-based quiz game that evaluates users on their knowledge of JavaScript, HTML, and CSS. Featuring a countdown timer, multiple-choice questions, and a score-tracking mechanism, it offers a comprehensive testing experience.
 
 ## 💻 Features
 

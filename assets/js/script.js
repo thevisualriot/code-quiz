@@ -38,6 +38,14 @@ var questionList = [
         "C": "font-color",
         "D": "style-color", 
         "correct": "B", 
+    },
+    {
+        "question": "What does the 'DOM' stand for in the context of JavaScript?",
+        "A": "Direct Output Method",
+        "B": "Data Output Mechanism",
+        "C": "Document Object Model",
+        "D": "Document Order Module", 
+        "correct": "C", 
     }
 ];
 

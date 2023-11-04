@@ -59,7 +59,7 @@ var score = 0;
 var points = 10;
 var n = 0;
 var users =[];
-var totalTime = 50;
+var totalTime = 60;
 var totalInterval;
 
 
@@ -118,6 +118,7 @@ function runQuestion(n){
     } else { // if there is no more questions
         questions.setAttribute('class', 'hide');
         endScreen.setAttribute('class', 'start');
+        clearInterval(totalInterval); // stop the timer
     }
 }
 
@@ -182,7 +183,6 @@ function countTime(){
 
 endScreen.addEventListener('click', function(e){
     if(e.target.matches('button')){
-        clearInterval(totalInterval); // stop the timer
         // add new player and score to the localStorage
         var newInitials = initials.value;
         var newScore = localStorage.getItem('score');

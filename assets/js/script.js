@@ -158,8 +158,9 @@ function runQuestion(n){
 
 // Set up the ANSWER BUTTON action
 choices.addEventListener('click', function(e){
-    feedback.setAttribute('class', 'feedback hide');
-    updateFeedback();
+
+    feedback.setAttribute('class', 'feedback hide'); // hide the old feedback
+    updateFeedback(); // update feedback info
 
     var selectedAnswer = e.target.id; // store the selected answer
     if (selectedAnswer === correctAnswer) {  // if the answer is correct
